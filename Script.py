@@ -43,7 +43,7 @@ def encode(image_name, secret_data):
             if data_index >= data_len:                          # if data is encoded, just break out of the loop
                 break
     return image
-    
+    print("[*] Encoding data...")
 def decode(image_name):
     print("[+] Decoding...")
     image = cv2.imread(image_name)
@@ -66,12 +66,13 @@ def decode(image_name):
     
     
 if __name__ == "__main__":
-    input_image = "original.png"
-    output_image = "encoded.png"
-    secret_data = "Cloud Counselage Internship Program."
+    path = input("Enter the Image name with extension: ")
+    input_image = path
+    output_image = "stego.png"
+    secret_data = input("Enter the text to be Encoded: ")
     
     encoded_image = encode(image_name=input_image, secret_data=secret_data)
-   
+    print("[*] Saving Encoded Image...")
     cv2.imwrite(output_image, encoded_image)
    
     decoded_data = decode(output_image)
